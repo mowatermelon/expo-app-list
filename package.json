@@ -1,0 +1,27 @@
+{
+  "name": "expo-install-apps",
+  "version": "1.0.12",
+  "description": "show install apps information",
+  "main": "build/Cellular.js",
+  "types": "build/Cellular.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "expo-install-apps"
+  ],
+  "devDependencies": {
+    "expo-module-scripts": "^4.0.0"
+  },
+  "peerDependencies": {
+    "expo": "*"
+  }
+}
