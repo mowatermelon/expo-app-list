@@ -6,7 +6,7 @@ import {
 } from "expo-modules-core";
 
 import { AppListGeneration, PermissionResponse } from "./AppList.types";
-import ExpoCellular from "./ExpoAppList";
+import ExpoInstall from "./ExpoAppList";
 
 export { AppListGeneration };
 
@@ -16,6 +16,14 @@ export {
   PermissionHookOptions,
   PermissionExpiration,
 } from "expo-modules-core";
+
+export const MODULE_NAME = ExpoInstall?.MODULE_NAME;
+export const API_VERSION = ExpoInstall?.API_VERSION;
+export const ANDROID_VERSION = ExpoInstall?.ANDROID_VERSION;
+export const MAX_API_LEVEL = ExpoInstall?.MAX_API_LEVEL;
+export const PERMISSION_NAME = ExpoInstall?.PERMISSION_NAME;
+export const MODULE_DESCRIPTION = ExpoInstall?.MODULE_DESCRIPTION;
+export const BUILD_TIME = ExpoInstall?.BUILD_TIME;
 
 // @needsAudit
 /**
@@ -36,8 +44,8 @@ export {
  * @deprecated Use [`allowsVoipAsync()`](#cellularallowsvoipasync) instead.
  *
  */
-export const allowsVoip: boolean | null = ExpoCellular
-  ? ExpoCellular.allowsVoip
+export const allowsVoip: boolean | null = ExpoInstall
+  ? ExpoInstall.allowsVoip
   : null;
 
 // @needsAudit
@@ -61,9 +69,7 @@ export const allowsVoip: boolean | null = ExpoCellular
  * @deprecated Use [`getCarrierNameAsync()`](#cellulargetcarriernameasync) instead.
  *
  */
-export const carrier: string | null = ExpoCellular
-  ? ExpoCellular.carrier
-  : null;
+export const carrier: string | null = ExpoInstall ? ExpoInstall.carrier : null;
 
 // @needsAudit
 /**
@@ -82,8 +88,8 @@ export const carrier: string | null = ExpoCellular
  * @deprecated Use [`getIsoCountryCodeAsync()`](#cellulargetisocountrycodeasync) instead.
  *
  */
-export const isoCountryCode: string | null = ExpoCellular
-  ? ExpoCellular.isoCountryCode
+export const isoCountryCode: string | null = ExpoInstall
+  ? ExpoInstall.isoCountryCode
   : null;
 
 // @needsAudit
@@ -104,8 +110,8 @@ export const isoCountryCode: string | null = ExpoCellular
  * @deprecated Use [`getMobileCountryCodeAsync()`](#cellulargetmobilecountrycodeasync) instead.
  *
  */
-export const mobileCountryCode: string | null = ExpoCellular
-  ? ExpoCellular.mobileCountryCode
+export const mobileCountryCode: string | null = ExpoInstall
+  ? ExpoInstall.mobileCountryCode
   : null;
 
 // @needsAudit
@@ -125,8 +131,8 @@ export const mobileCountryCode: string | null = ExpoCellular
  * @deprecated Use [`getMobileNetworkCodeAsync()`](#cellulargetmobilenetworkcodeasync) instead.
  *
  */
-export const mobileNetworkCode: string | null = ExpoCellular
-  ? ExpoCellular.mobileNetworkCode
+export const mobileNetworkCode: string | null = ExpoInstall
+  ? ExpoInstall.mobileNetworkCode
   : null;
 
 // @needsAudit
@@ -150,13 +156,13 @@ export const mobileNetworkCode: string | null = ExpoCellular
  * ```
  */
 export async function getCellularGenerationAsync(): Promise<AppListGeneration> {
-  if (!ExpoCellular.getCellularGenerationAsync) {
+  if (!ExpoInstall.getCellularGenerationAsync) {
     throw new UnavailabilityError(
       "expo-install-apps",
       "getCellularGenerationAsync",
     );
   }
-  return await ExpoCellular.getCellularGenerationAsync();
+  return await ExpoInstall.getCellularGenerationAsync();
 }
 
 /**
@@ -176,10 +182,10 @@ export async function getCellularGenerationAsync(): Promise<AppListGeneration> {
  * ```
  */
 export async function allowsVoipAsync(): Promise<boolean | null> {
-  if (!ExpoCellular.allowsVoipAsync) {
+  if (!ExpoInstall.allowsVoipAsync) {
     throw new UnavailabilityError("expo-install-apps", "allowsVoipAsync");
   }
-  return await ExpoCellular.allowsVoipAsync();
+  return await ExpoInstall.allowsVoipAsync();
 }
 
 /**
@@ -199,13 +205,13 @@ export async function allowsVoipAsync(): Promise<boolean | null> {
  *
  */
 export async function getIsoCountryCodeAsync(): Promise<string | null> {
-  if (!ExpoCellular.getIsoCountryCodeAsync) {
+  if (!ExpoInstall.getIsoCountryCodeAsync) {
     throw new UnavailabilityError(
       "expo-install-apps",
       "getIsoCountryCodeAsync",
     );
   }
-  return await ExpoCellular.getIsoCountryCodeAsync();
+  return await ExpoInstall.getIsoCountryCodeAsync();
 }
 
 /**
@@ -228,10 +234,10 @@ export async function getIsoCountryCodeAsync(): Promise<string | null> {
  * ```
  */
 export async function getCarrierNameAsync(): Promise<string | null> {
-  if (!ExpoCellular.getCarrierNameAsync) {
+  if (!ExpoInstall.getCarrierNameAsync) {
     throw new UnavailabilityError("expo-install-apps", "getCarrierNameAsync");
   }
-  return await ExpoCellular.getCarrierNameAsync();
+  return await ExpoInstall.getCarrierNameAsync();
 }
 
 /**
@@ -251,13 +257,13 @@ export async function getCarrierNameAsync(): Promise<string | null> {
  * ```
  */
 export async function getMobileCountryCodeAsync(): Promise<string | null> {
-  if (!ExpoCellular.getMobileCountryCodeAsync) {
+  if (!ExpoInstall.getMobileCountryCodeAsync) {
     throw new UnavailabilityError(
       "expo-install-apps",
       "getMobileCountryCodeAsync",
     );
   }
-  return await ExpoCellular.getMobileCountryCodeAsync();
+  return await ExpoInstall.getMobileCountryCodeAsync();
 }
 
 /**
@@ -277,13 +283,13 @@ export async function getMobileCountryCodeAsync(): Promise<string | null> {
  * ```
  */
 export async function getMobileNetworkCodeAsync(): Promise<string | null> {
-  if (!ExpoCellular.getMobileNetworkCodeAsync) {
+  if (!ExpoInstall.getMobileNetworkCodeAsync) {
     throw new UnavailabilityError(
       "expo-install-apps",
       "getMobileNetworkCodeAsync",
     );
   }
-  return await ExpoCellular.getMobileNetworkCodeAsync();
+  return await ExpoInstall.getMobileNetworkCodeAsync();
 }
 
 /**
@@ -291,7 +297,7 @@ export async function getMobileNetworkCodeAsync(): Promise<string | null> {
  */
 export async function getPermissionsAsync(): Promise<PermissionResponse> {
   if (Platform.OS === "android") {
-    return await ExpoCellular.getPermissionsAsync();
+    return await ExpoInstall.getPermissionsAsync();
   }
 
   return {
@@ -307,7 +313,7 @@ export async function getPermissionsAsync(): Promise<PermissionResponse> {
  */
 export async function requestPermissionsAsync(): Promise<PermissionResponse> {
   if (Platform.OS === "android") {
-    return await ExpoCellular.requestPermissionsAsync();
+    return await ExpoInstall.requestPermissionsAsync();
   }
 
   return {
@@ -355,12 +361,12 @@ export type AppsChangeEvent = {
 export function addAppsChangeListener(
   listener: (event: AppsChangeEvent) => void,
 ) {
-  return ExpoCellular.addListener("onAppsChange", listener);
+  return ExpoInstall.addListener("onAppsChange", listener);
 }
 
 export async function requestAppPermissionsAsync(): Promise<PermissionResponse> {
   if (Platform.OS === "android") {
-    return await ExpoCellular.requestAppPermissionsAsync();
+    return await ExpoInstall.requestAppPermissionsAsync();
   }
 
   return {
@@ -372,10 +378,10 @@ export async function requestAppPermissionsAsync(): Promise<PermissionResponse> 
 }
 
 export async function getInstalledApps(): Promise<AppInfo[]> {
-  if (!ExpoCellular.getMobileNetworkCodeAsync) {
+  if (!ExpoInstall.getMobileNetworkCodeAsync) {
     throw new UnavailabilityError("expo-install-apps", "getInstalledApps");
   }
-  return await ExpoCellular.getInstalledApps();
+  return await ExpoInstall.getInstalledApps();
 }
 
 /**
@@ -384,7 +390,7 @@ export async function getInstalledApps(): Promise<AppInfo[]> {
  */
 export async function getAppPermissionsAsync(): Promise<PermissionResponse> {
   if (Platform.OS === "android") {
-    return await ExpoCellular.getAppPermissionsAsync();
+    return await ExpoInstall.getAppPermissionsAsync();
   }
 
   return {

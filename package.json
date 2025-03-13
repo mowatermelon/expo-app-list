@@ -1,6 +1,6 @@
 {
   "name": "expo-install-apps",
-  "version": "1.0.19",
+  "version": "1.0.22",
   "description": "show install apps information",
   "main": "build/AppList.js",
   "types": "build/AppList.d.ts",

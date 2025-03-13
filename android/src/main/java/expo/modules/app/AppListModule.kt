@@ -17,17 +17,23 @@ import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.IntentFilter
 
-const val moduleName = "ExpoCellular"
+const val MODULE_NAME = "ExpoCellular"
 
 class AppListModule : Module() {
   private val APP_PERMISSION = Manifest.permission.QUERY_ALL_PACKAGES
 
   override fun definition() = ModuleDefinition {
-    Name(moduleName)
+    Name(MODULE_NAME)
     Constants {
       val telephonyManager = telephonyManager()
       mapOf(
-        "moduleName" to moduleName,
+        "MODULE_NAME" to MODULE_NAME,
+        "API_VERSION" to 1,
+        "ANDROID_VERSION" to Build.VERSION.SDK_INT,
+        "MAX_API_LEVEL" to Build.VERSION_CODES.S_V2,
+        "PERMISSION_NAME" to APP_PERMISSION,
+        "MODULE_DESCRIPTION" to "提供设备安装应用查询功能",
+        "BUILD_TIME" to BuildConfig.BUILD_TIME,
         "allowsVoip" to SipManager.isVoipSupported(context),
         "isoCountryCode" to telephonyManager?.simCountryIso,
         "carrier" to telephonyManager?.simOperatorName,
