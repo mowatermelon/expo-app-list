@@ -384,7 +384,7 @@ export async function getInstalledApps(): Promise<AppInfo[]> {
  */
 export async function getAppPermissionsAsync(): Promise<PermissionResponse> {
   if (Platform.OS === "android") {
-    return await ExpoCellular.getPermissionsAsync();
+    return await ExpoCellular.getAppPermissionsAsync();
   }
 
   return {

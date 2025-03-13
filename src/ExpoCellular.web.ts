@@ -1,4 +1,5 @@
-import { CellularGeneration } from "./Cellular.types";
+import { AppInfo } from "./Cellular";
+import { CellularGeneration, PermissionResponse } from "./Cellular.types";
 
 export default {
   get allowsVoip(): null {
@@ -16,6 +17,11 @@ export default {
   get mobileNetworkCode(): null {
     return null;
   },
+  /**
+   * Web平台实现：使用navigator.connection检测网络类型
+   * @platform web
+   * @returns 根据effectiveType返回对应的蜂窝网络代际
+   */
   async getCellularGenerationAsync(): Promise<CellularGeneration> {
     const connection =
       // @ts-expect-error
@@ -40,12 +46,22 @@ export default {
     }
   },
 
+  /**
+   * Web平台不支持VoIP检测
+   * @platform web
+   * @returns 固定返回null
+   */
   async allowsVoipAsync(): Promise<boolean | null> {
     return null;
   },
   async getIsoCountryCodeAsync(): Promise<string | null> {
     return null;
   },
+  /**
+   * Web平台不支持运营商信息获取
+   * @platform web
+   * @returns 固定返回null
+   */
   async getCarrierNameAsync(): Promise<string | null> {
     return null;
   },
@@ -53,6 +69,18 @@ export default {
     return null;
   },
   async getMobileNetworkCodeAsync(): Promise<string | null> {
+    return null;
+  },
+
+  async getAppPermissionsAsync(): Promise<PermissionResponse | null> {
+    return null;
+  },
+
+  async requestAppPermissionsAsync(): Promise<PermissionResponse | null> {
+    return null;
+  },
+
+  async getInstalledApps(): Promise<AppInfo[] | null> {
     return null;
   },
 };

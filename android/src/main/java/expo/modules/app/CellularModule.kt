@@ -80,7 +80,6 @@ class CellularModule : Module() {
       )
     }
 
-
     AsyncFunction("getInstalledApps") {
       withContext(Dispatchers.IO) {
         val context = requireContext()

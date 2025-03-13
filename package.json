@@ -1,6 +1,6 @@
 {
   "name": "expo-install-apps",
-  "version": "1.0.12",
+  "version": "1.0.15",
   "description": "show install apps information",
   "main": "build/Cellular.js",
   "types": "build/Cellular.d.ts",
