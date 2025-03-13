@@ -2,7 +2,7 @@ package expo.modules.app
 
 import expo.modules.kotlin.types.Enumerable
 
-enum class CellularGeneration(val value: Int) : Enumerable {
+enum class AppListGeneration(val value: Int) : Enumerable {
   UNKNOWN(0),
   CG_2G(1),
   CG_3G(2),

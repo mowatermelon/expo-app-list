@@ -19,7 +19,7 @@ import android.content.IntentFilter
 
 const val moduleName = "ExpoCellular"
 
-class CellularModule : Module() {
+class AppListModule : Module() {
   private val APP_PERMISSION = Manifest.permission.QUERY_ALL_PACKAGES
 
   override fun definition() = ModuleDefinition {
@@ -27,6 +27,7 @@ class CellularModule : Module() {
     Constants {
       val telephonyManager = telephonyManager()
       mapOf(
+        "moduleName" to moduleName,
         "allowsVoip" to SipManager.isVoipSupported(context),
         "isoCountryCode" to telephonyManager?.simCountryIso,
         "carrier" to telephonyManager?.simOperatorName,
@@ -40,7 +41,7 @@ class CellularModule : Module() {
         getCurrentGeneration()
       } catch (e: SecurityException) {
         Log.w(moduleName, "READ_PHONE_STATE permission is required to acquire network type", e)
-        CellularGeneration.UNKNOWN.value
+        AppListGeneration.UNKNOWN.value
       }
     }
 
@@ -189,7 +190,7 @@ class CellularModule : Module() {
   @SuppressLint("MissingPermission")
   private fun getCurrentGeneration(): Int {
     val telephonyManager = telephonyManager()
-      ?: return CellularGeneration.UNKNOWN.value
+      ?: return AppListGeneration.UNKNOWN.value
     val networkType = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
       telephonyManager.dataNetworkType
     } else {
@@ -202,7 +203,7 @@ class CellularModule : Module() {
       TelephonyManager.NETWORK_TYPE_CDMA,
       TelephonyManager.NETWORK_TYPE_1xRTT,
       TelephonyManager.NETWORK_TYPE_IDEN -> {
-        CellularGeneration.CG_2G.value
+        AppListGeneration.CG_2G.value
       }
       TelephonyManager.NETWORK_TYPE_UMTS,
       TelephonyManager.NETWORK_TYPE_EVDO_0,
@@ -213,16 +214,16 @@ class CellularModule : Module() {
       TelephonyManager.NETWORK_TYPE_EVDO_B,
       TelephonyManager.NETWORK_TYPE_EHRPD,
       TelephonyManager.NETWORK_TYPE_HSPAP -> {
-        CellularGeneration.CG_3G.value
+        AppListGeneration.CG_3G.value
       }
       TelephonyManager.NETWORK_TYPE_LTE -> {
-        CellularGeneration.CG_4G.value
+        AppListGeneration.CG_4G.value
       }
       TelephonyManager.NETWORK_TYPE_NR -> {
-        CellularGeneration.CG_5G.value
+        AppListGeneration.CG_5G.value
       }
       else -> {
-        CellularGeneration.UNKNOWN.value
+        AppListGeneration.UNKNOWN.value
       }
     }
   }

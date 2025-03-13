@@ -2,6 +2,8 @@
 
 提供获取设备安装应用列表和安装权限管理的Expo模块
 
+github 地址: https://github.com/mowatermelon/expo-app-list
+
 ## 安装
 
 ```bash

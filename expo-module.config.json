@@ -2,8 +2,7 @@
   "platforms": ["android", "web"],
   "android": {
     "modules": [
-      "expo.modules.app.CellularModule",
-      "expo.modules.app.InstallModule"
+      "expo.modules.app.AppListModule"
     ]
   }
 }

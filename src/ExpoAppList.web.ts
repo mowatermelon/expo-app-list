@@ -1,5 +1,5 @@
-import { AppInfo } from "./Cellular";
-import { CellularGeneration, PermissionResponse } from "./Cellular.types";
+import { AppInfo } from "./AppList";
+import { AppListGeneration, PermissionResponse } from "./AppList.types";
 
 export default {
   get allowsVoip(): null {
@@ -22,7 +22,7 @@ export default {
    * @platform web
    * @returns 根据effectiveType返回对应的蜂窝网络代际
    */
-  async getCellularGenerationAsync(): Promise<CellularGeneration> {
+  async getCellularGenerationAsync(): Promise<AppListGeneration> {
     const connection =
       // @ts-expect-error
       navigator.connection ||
@@ -33,16 +33,16 @@ export default {
       switch (connection.effectiveType) {
         case "slow-2g":
         case "2g":
-          return CellularGeneration.CELLULAR_2G;
+          return AppListGeneration.CELLULAR_2G;
         case "3g":
-          return CellularGeneration.CELLULAR_3G;
+          return AppListGeneration.CELLULAR_3G;
         case "4g":
-          return CellularGeneration.CELLULAR_4G;
+          return AppListGeneration.CELLULAR_4G;
         default:
-          return CellularGeneration.UNKNOWN;
+          return AppListGeneration.UNKNOWN;
       }
     } else {
-      return CellularGeneration.UNKNOWN;
+      return AppListGeneration.UNKNOWN;
     }
   },
 

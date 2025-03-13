@@ -10,7 +10,7 @@ export {
  * Describes the current generation of the cellular connection. It is an enum with these possible
  * values:
  */
-export enum CellularGeneration {
+export enum AppListGeneration {
   /**
    * Either we are not currently connected to a cellular network or type could not be determined.
    */

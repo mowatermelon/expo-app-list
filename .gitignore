@@ -139,25 +139,5 @@ expo-env.d.ts
 # @end expo-cli
 .DS_Store
 ios
-plugin/build/withCellular.d.ts
-plugin/build/withCellular.js
-build/Cellular.d.ts
-build/Cellular.d.ts.map
-build/Cellular.js
-build/Cellular.js.map
-build/Cellular.types.d.ts
-build/Cellular.types.d.ts.map
-build/Cellular.types.js
-build/Cellular.types.js.map
-build/ExpoCellular.d.ts
-build/ExpoCellular.d.ts.map
-build/ExpoCellular.js
-build/ExpoCellular.js.map
-build/ExpoCellular.web.d.ts
-build/ExpoCellular.web.d.ts.map
-build/ExpoCellular.web.js
-build/ExpoCellular.web.js.map
-build/InstalledApps.d.ts
-build/InstalledApps.d.ts.map
-build/InstalledApps.js
-build/InstalledApps.js.map
+plugin/build/*
+build/*

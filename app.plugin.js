@@ -1,1 +1,1 @@
-module.exports = require('./plugin/build/withCellular');
+module.exports = require("./plugin/build/withAppList");

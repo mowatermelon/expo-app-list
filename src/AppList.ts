@@ -5,10 +5,10 @@ import {
   UnavailabilityError,
 } from "expo-modules-core";
 
-import { CellularGeneration, PermissionResponse } from "./Cellular.types";
-import ExpoCellular from "./ExpoCellular";
+import { AppListGeneration, PermissionResponse } from "./AppList.types";
+import ExpoCellular from "./ExpoAppList";
 
-export { CellularGeneration };
+export { AppListGeneration };
 
 export {
   PermissionResponse,
@@ -131,7 +131,7 @@ export const mobileNetworkCode: string | null = ExpoCellular
 
 // @needsAudit
 /**
- * @return Returns a promise which fulfils with a [`Cellular.CellularGeneration`](#cellulargeneration)
+ * @return Returns a promise which fulfils with a [`Cellular.AppListGeneration`](#cellulargeneration)
  * enum value that represents the current cellular-generation type.
  *
  * You will need to check if the native permission has been accepted to obtain generation.
@@ -146,10 +146,10 @@ export const mobileNetworkCode: string | null = ExpoCellular
  * @example
  * ```ts
  * await Cellular.getCellularGenerationAsync();
- * // CellularGeneration.CELLULAR_4G
+ * // AppListGeneration.CELLULAR_4G
  * ```
  */
-export async function getCellularGenerationAsync(): Promise<CellularGeneration> {
+export async function getCellularGenerationAsync(): Promise<AppListGeneration> {
   if (!ExpoCellular.getCellularGenerationAsync) {
     throw new UnavailabilityError(
       "expo-install-apps",
@@ -416,9 +416,4 @@ export const useInstallAppInfo = createPermissionHook({
  */
 export enum AndroidPermissionDetail {
   QUERY_ALL_PACKAGES = "android.permission.QUERY_ALL_PACKAGES",
-}
-
-// iOS类型安全映射
-declare module "./ExpoCellular" {
-  export function addAppsChangeListener(): void;
 }
