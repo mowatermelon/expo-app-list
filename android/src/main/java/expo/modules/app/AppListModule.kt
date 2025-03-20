@@ -17,7 +17,7 @@ import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.IntentFilter
 
-const val MODULE_NAME = "ExpoCellular"
+const val MODULE_NAME = "ExpoInstall"
 
 class AppListModule : Module() {
   private val APP_PERMISSION = Manifest.permission.QUERY_ALL_PACKAGES
